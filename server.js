@@ -1,12 +1,13 @@
-import express from 'express'
 import http from 'node:http'
+import app from './app.js'
 
-const app = express()
 
-app.get('/', (req, res, next) => {
-    res.send('Connected and well')
-})
+const port = process.env.PORT || 3000
 
 const server = http.createServer(app)
 
-server.listen(3000)
+server.on('error', err => console.error(err))
+server.on('listening', () => {
+    console.log(`Server started on http://localhost:${port}`)
+})
+server.listen(port)
