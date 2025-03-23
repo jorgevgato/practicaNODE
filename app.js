@@ -5,15 +5,23 @@ import * as homeController from './controllers/homeController.js'
 
 const app = express()
 
-app.use(logger('dev'))
+app.set('views', 'views')
+app.set('view engine', 'ejs')
+app.locals.appName = 'nodePOP'
 
+app.use(logger('dev'))
+app.use(express.static())
+
+
+/* APP ROUTES */
 app.get('/', homeController.index)
 
 app.use((req, res, next) => {
     next(createError(404))
 })
 
-/** 
+
+/* ERROR HANDLER */
 app.use((err, req, res, next) => {
     if (err.array) {
       err.message = 'Invalid request: ' + err.array()
@@ -25,10 +33,9 @@ app.use((err, req, res, next) => {
     res.status(err.status || 500)
 
     res.locals.message = err.message
-    res.locals.error = process.env.NODEAPP_ENV === 'development' ? err : {}
+    res.locals.error = process.env.NODEPOP_ENV === 'development' ? err : {}
 
     res.render('error')
 })
-*/
 
 export default app
