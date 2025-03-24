@@ -1,5 +1,20 @@
 <%- include('header.ejs') %>
 
-<img src="/PopLogo.png" alt="PopLogo">
+    <p><img src="/PopLogo.png" alt="PopLogo" ></p>
+
+    <h2>Productos</h2>
+    <div><% products.forEach(product => { %>
+        <p>
+            <b><%= product.name %></b> tiene un precio de <%= product.price %> €.
+            <a href="" target="_blank" rel="noopener noreferrer">Ver imagen</a>
+            
+        </p>
+        <p>
+            <em>Tagged: <%= product.tags %></em>
+        </p>
+        <% }) %>
+    </div>
+
+
 
 <%- include('footer.ejs') %>
