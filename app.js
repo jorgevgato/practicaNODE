@@ -4,6 +4,10 @@ import createError from 'http-errors'
 import logger from 'morgan'
 import { fileURLToPath } from 'url';
 import * as homeController from './controllers/homeController.js'
+import connectMongoose from './lib/connectMongoose.js';
+
+await connectMongoose()
+console.log('Connected to MongoDB')
 
 const app = express()
 const __filename = fileURLToPath(import.meta.url);
