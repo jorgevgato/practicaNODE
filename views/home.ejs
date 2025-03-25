@@ -1,20 +1,32 @@
 <%- include('header.ejs') %>
 
-    <p><img src="/PopLogo.png" alt="PopLogo" ></p>
+<img src="/PopLogo.png" class="img-fluid" alt="logo">
 
-    <h2>Productos</h2>
-    <div><% products.forEach(product => { %>
-        <p>
-            <b><%= product.name %></b> tiene un precio de <%= product.price %> €.
-            <a href="" target="_blank" rel="noopener noreferrer">Ver imagen</a>
-            
-        </p>
-        <p>
-            <em>Tagged: <%= product.tags %></em>
-        </p>
+<div class="container-fluid">
+    <h1>Productos</h1>
+    <div class="row g-1">
+        <% products.forEach(product => { %>
+            <div class="col-md-6 mb-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="/shadowprofpic.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= product.name %></h5>
+                        <p class="card-text">Disponible a un precio de <%= product.price %> €.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><em><%= product.tags %></em></li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
         <% }) %>
     </div>
-
+</div>
 
 
 <%- include('footer.ejs') %>
