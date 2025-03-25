@@ -1,6 +1,7 @@
 import { confirm } from '@inquirer/prompts';
 import connectMongoose from './lib/connectMongoose.js'
 import Product from "./models/Product.js"
+import User from './models/User.js';
 
 const connection = await connectMongoose()
 console.log('Connected to MongoDB: ', connection.name)
@@ -12,9 +13,11 @@ if (answer === false) {
 }
 
 await initProducts()
+await initUsers()
+
 await connection.close()
 
-async function initProducts(params) {
+async function initProducts() {
 	const result = await Product.deleteMany()
 	console.log(`${result.deletedCount} products deleted`)
 
@@ -57,4 +60,15 @@ async function initProducts(params) {
 		}
 	])
 	console.log(`${insertResult.length} products inserted.`)
+}
+
+async function initUsers() {
+	const result = await User.deleteMany()
+	console.log(`${result.deletedCount} users deleted`)
+
+	const insertResult = await User.insertMany([
+		{email: 'user1@example.com', password: await User.hashPassword('1234')},
+		{email: 'user2@example.com', password: await User.hashPassword('1234')}
+	])
+	console.log(`${insertResult.length} users inserted.`)
 }
