@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 import connectMongoose from './lib/connectMongoose.js';
 import * as homeController from './controllers/homeController.js'
 import * as loginController from './controllers/loginController.js'
+import * as sessionManager from './lib/sessionManager.js'
 
 await connectMongoose()
 console.log('Connected to MongoDB')
@@ -24,6 +25,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 
 /* APP ROUTES */
+app.use(sessionManager.middleware)
+app.use((req, res, next) => {
+  res.locals.session = req.session
+  next()
+})
 app.get('/', homeController.index)
 app.get('/login', loginController.index)
 app.post('/login', loginController.postLogin)

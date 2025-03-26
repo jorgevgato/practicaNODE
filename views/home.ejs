@@ -1,6 +1,13 @@
 <%- include('header.ejs') %>
 
-<img src="/PopLogo.png" class="img-fluid" alt="logo">
+<p>User ID: <%= session.userId %> </p>
+
+<% if (!session.userId) { %>
+
+    <p>¡<a href="/login">Inicia sesión</a> para acceder a tus productos!</p>
+    <img src="/PopLogo.png" class="img-fluid" alt="logo">
+
+<% } else { %>
 
 <div class="container-fluid">
     <h1>Productos</h1>
@@ -28,5 +35,6 @@
     </div>
 </div>
 
+<% } %>
 
 <%- include('footer.ejs') %>
