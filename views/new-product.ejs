@@ -1,0 +1,28 @@
+<%- include('header.ejs') %>
+
+<div class="container">
+    <h1>Nuevo producto</h1>
+    <form method="post">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nombre del producto</label>
+            <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Precio</label>
+            <input type="number" name="price" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Foto</label>
+            <input type="text" name="image" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Tags</label>
+            <input type="text" name="tags" class="form-control" id="exampleInputPassword1">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Añadir producto</button>
+
+    </form>
+</div>
+
+<%- include('footer.ejs') %>

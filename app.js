@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 import connectMongoose from './lib/connectMongoose.js';
 import * as homeController from './controllers/homeController.js'
 import * as loginController from './controllers/loginController.js'
+import * as productsController from './controllers/productsController.js'
 import * as sessionManager from './lib/sessionManager.js'
 
 await connectMongoose()
@@ -31,11 +32,13 @@ app.get('/', homeController.index)
 app.get('/login', loginController.index)
 app.post('/login', loginController.postLogin)
 app.get('/logout', loginController.logout)
+app.get('/products/new', productsController.index)
+app.post('/products/new', productsController.postNew)
+
 
 app.use((req, res, next) => {
     next(createError(404))
 })
-
 
 /* ERROR HANDLER */
 app.use((err, req, res, next) => {
