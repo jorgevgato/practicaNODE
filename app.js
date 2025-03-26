@@ -26,13 +26,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 /* APP ROUTES */
 app.use(sessionManager.middleware)
-app.use((req, res, next) => {
-  res.locals.session = req.session
-  next()
-})
+app.use(sessionManager.useSessionInViews)
 app.get('/', homeController.index)
 app.get('/login', loginController.index)
 app.post('/login', loginController.postLogin)
+app.get('logout', loginController.logout)
 
 app.use((req, res, next) => {
     next(createError(404))

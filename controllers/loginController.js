@@ -26,5 +26,14 @@ export async function postLogin(req, res, next) {
     } catch (error) {
         next(error)
     }
-    
+}
+
+export function logout(req, res, next) {
+    req.session.regenerate(err => {
+        if (err) {
+            next(err)
+            return
+        }
+        res.redirect('/')
+    })
 }
