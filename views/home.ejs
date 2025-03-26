@@ -1,13 +1,11 @@
 <%- include('header.ejs') %>
 
-<p>User ID: <%= session.userId %> </p>
-
 <% if (!session.userId) { %>
     <div class="container-fluid">
-        <p>¡<a href="/login">Inicia sesión</a> para acceder a tus productos!</p>
+        <h1>¡<a href="/login">Inicia sesión</a> para acceder a tus productos!</h1>
         <img src="/PopLogo.png" class="img-fluid" alt="logo">
     </div>
-    
+
 <% } else { %>
 
 <div class="container-fluid">
