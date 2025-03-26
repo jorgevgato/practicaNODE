@@ -3,8 +3,9 @@ import express from 'express'
 import createError from 'http-errors'
 import logger from 'morgan'
 import { fileURLToPath } from 'url';
-import * as homeController from './controllers/homeController.js'
 import connectMongoose from './lib/connectMongoose.js';
+import * as homeController from './controllers/homeController.js'
+import * as loginController from './controllers/loginController.js'
 
 await connectMongoose()
 console.log('Connected to MongoDB')
@@ -24,6 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 /* APP ROUTES */
 app.get('/', homeController.index)
+app.get('/login', loginController.index)
+app.post('/login', loginController.postLogin)
 
 app.use((req, res, next) => {
     next(createError(404))

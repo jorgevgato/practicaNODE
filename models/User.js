@@ -11,6 +11,10 @@ userSchema.statics.hashPassword = (clearPassword) => {
     return bcrypt.hash(clearPassword, 5)
 }
 
+userSchema.methods.comparePassword = function(clearPassword) {
+    return bcrypt.compare(clearPassword, this.password)
+}
+
 const User = mongoose.model('User', userSchema)
 
 export default User
