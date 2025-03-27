@@ -2,22 +2,22 @@
 
 <div class="container">
     <h1>Nuevo producto</h1>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Nombre del producto</label>
-            <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="name" class="form-label">Nombre del producto</label>
+            <input type="text" name="name" class="form-control" id="name">
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Precio</label>
-            <input type="number" name="price" class="form-control" id="exampleInputPassword1">
+            <label for="price" class="form-label">Precio</label>
+            <input type="number" name="price" class="form-control" id="price">
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Foto</label>
-            <input type="text" name="image" class="form-control" id="exampleInputPassword1">
+            <label for="image" class="form-label">Foto</label>
+            <input type="file" name="image" class="form-control" id="image">
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Tags</label>
-            <input type="text" name="tags" class="form-control" id="exampleInputPassword1">
+            <label for="tags" class="form-label">Tags</label>
+            <input type="text" name="tags" class="form-control" id="tags">
         </div>
 
         <button type="submit" class="btn btn-primary">Añadir producto</button>

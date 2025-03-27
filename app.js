@@ -32,8 +32,8 @@ app.get('/', homeController.index)
 app.get('/login', loginController.index)
 app.post('/login', loginController.postLogin)
 app.get('/logout', loginController.logout)
-app.get('/products/new', productsController.index)
-app.post('/products/new', productsController.postNew)
+app.get('/products/new', sessionManager.guard, productsController.index)
+app.post('/products/new', sessionManager.guard, productsController.postNew)
 
 
 app.use((req, res, next) => {

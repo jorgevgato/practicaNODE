@@ -1,6 +1,6 @@
 # nodePOP
 
-## Instalation
+## Installation
 
 Install dependencies with:
 
