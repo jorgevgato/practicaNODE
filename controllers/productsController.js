@@ -7,10 +7,25 @@ export function index(req, res, next) {
 export async function postNew(req, res, next) {
     try {
         const {name, price, image, tags} = req.body
+        const userId = req.session.userId
 
-        const product = new Product({name, price, image, tags}) 
+        const product = new Product({name, owner: userId, price, image, tags}) 
 
         await product.save()
+
+        res.redirect('/')
+
+    } catch (error) {
+        next(error)
+    }
+}
+
+export async function deleteProduct(req, res, next) {
+    try {
+        const userId = req.session.userId
+        const productId = req.params.productId
+
+        await Product.deleteOne({_id: productId, owner: userId})
 
         res.redirect('/')
 

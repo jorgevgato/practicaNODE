@@ -12,8 +12,8 @@ if (answer === false) {
 	process.exit()
 }
 
-await initProducts()
 await initUsers()
+await initProducts()
 
 await connection.close()
 
@@ -21,39 +21,58 @@ async function initProducts() {
 	const result = await Product.deleteMany()
 	console.log(`${result.deletedCount} products deleted`)
 
+	const [user1, user2] = await Promise.all([
+		User.findOne({email: 'user1@example.com'}),
+		User.findOne({email: 'user2@example.com'})
+	])
+
 	const insertResult = await Product.insertMany([
-		{
-			name : "Peugeot clásica",
-			price : 250,
-			image : "/PopLogo.png",
-			tags : [ "vehicle" ]
-		},
+		
 		{
 			name : "Nokia 3310",
+			owner: user2._id,
 			price : 28,
 			image : "/PopLogo.png",
-			tags : [ "mobile", "lifestyle" ]
+			tags : [ "mobile" ]
 		},
 		{
 			name : "Blackberry",
+			owner: user2._id,
 			price : 5,
 			image : "source",
 			tags : [ "mobile" ]
 		},
 		{
+			name : "iPhone X 256GB GOLD",
+			owner: user2._id,
+			price : 950,
+			image : "source",
+			tags : [ "mobile" ]
+		},
+		{
+			name : "Peugeot clásica",
+			owner: user1._id,
+			price : 250,
+			image : "/PopLogo.png",
+			tags : [ "vehicle" ]
+		},
+		{
 			name : "Megamo West 15",
+			owner: user1._id,
 			price : 2300,
 			image : "source",
 			tags : [ "vehicle" ]
 		},
 		{
 			name : "Bianchi Oltre Pro Race",
+			owner: user1._id,
 			price : 2999,
 			image : "source",
 			tags : [ "vehicle" ]
 		},
 		{
 			name : "Orbea Terra",
+			owner: user1._id,
 			price : 3500,
 			image : "source",
 			tags : [ "vehicle" ]

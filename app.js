@@ -34,7 +34,7 @@ app.post('/login', loginController.postLogin)
 app.get('/logout', loginController.logout)
 app.get('/products/new', sessionManager.guard, productsController.index)
 app.post('/products/new', sessionManager.guard, productsController.postNew)
-
+app.get('/products/delete/:productId', sessionManager.guard, productsController.deleteProduct)
 
 app.use((req, res, next) => {
     next(createError(404))
