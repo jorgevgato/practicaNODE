@@ -29,52 +29,52 @@ async function initProducts() {
 	const insertResult = await Product.insertMany([
 		
 		{
-			name : "Nokia 3310",
+			name : "Nokia 3330",
 			owner: user2._id,
 			price : 28,
-			image : "/PopLogo.png",
+			image : "/nokia3330.jpg",
 			tags : [ "mobile" ]
 		},
 		{
 			name : "Blackberry",
 			owner: user2._id,
 			price : 5,
-			image : "source",
+			image : "/blackberry.jpg",
 			tags : [ "mobile" ]
 		},
 		{
-			name : "iPhone X 256GB GOLD",
+			name : "iPhone XXI GOLD",
 			owner: user2._id,
-			price : 950,
-			image : "source",
+			price : 25000,
+			image : "/iphonegold.jpg",
 			tags : [ "mobile" ]
 		},
 		{
 			name : "Peugeot clásica",
 			owner: user1._id,
-			price : 250,
-			image : "/PopLogo.png",
+			price : 270,
+			image : "/aubi.jpg",
 			tags : [ "vehicle" ]
 		},
 		{
 			name : "Megamo West 15",
 			owner: user1._id,
 			price : 2300,
-			image : "source",
+			image : "/west.jpg",
 			tags : [ "vehicle" ]
 		},
 		{
 			name : "Bianchi Oltre Pro Race",
 			owner: user1._id,
-			price : 2999,
-			image : "source",
+			price : 3399,
+			image : "/bianchi.jpg",
 			tags : [ "vehicle" ]
 		},
 		{
 			name : "Orbea Terra",
 			owner: user1._id,
 			price : 3500,
-			image : "source",
+			image : "/orbea.jpg",
 			tags : [ "vehicle" ]
 		}
 	])
