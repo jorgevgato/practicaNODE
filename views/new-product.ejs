@@ -7,11 +7,11 @@
     <form method="POST">
         <div class="mb-3">
             <label for="name" class="form-label">Nombre del producto</label>
-            <input type="text" name="name" class="form-control" id="name">
+            <input required type="text" name="name" class="form-control" id="name">
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Precio</label>
-            <input type="number" name="price" class="form-control" id="price">
+            <input required type="number" name="price" class="form-control" id="price">
         </div>
         <!--
         <div class="mb-3">
@@ -21,13 +21,24 @@
         -->
         <div class="mb-3">
             <label for="image" class="form-label">Imagen</label>
-            <input type="text" name="image" class="form-control" id="image" placeholder="/PopLogo.png">
+            <input required type="text" name="image" class="form-control" id="image" placeholder="/PopLogo.png">
         </div>
+        <!--
         <div class="mb-3">
             <label for="tags" class="form-label">Tags</label>
-            <input type="text" name="tags" class="form-control" id="tags">
+            <input required type="text" name="tags" class="form-control" id="tags">
         </div>
-
+        -->
+        <div class="mb-3">
+            <label for="tags" class="form-label">Tags</label>
+            <select required class="form-select" name="tags" aria-label="Default select example">
+                <option value="" disabled selected>Selecciona una categoría</option>
+                <option value="lifestyle">lifestyle</option>
+                <option value="mobile">mobile</option>
+                <option value="vehicle">vehicle</option>
+                <option value="work">work</option>
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary">Añadir producto</button>
 
     </form>
