@@ -11,10 +11,10 @@ export async function index (req, res, next) {
 
         if (userId) {
         const totalProducts = await Product.countDocuments({owner: userId})
-        console.log('Total productos: ', totalProducts)
+    //    console.log('Total productos: ', totalProducts)
         
         totalPages = Math.ceil(totalProducts / limit) || 1
-        console.log('Total páginas: ', totalPages)
+    //    console.log('Total páginas: ', totalPages)
 
         products = await Product.find({owner: userId})
             .limit(limit)
