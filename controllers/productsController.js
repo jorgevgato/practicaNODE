@@ -1,3 +1,4 @@
+import { log } from "node:console"
 import Product from "../models/Product.js"
 
 export function index(req, res, next) {
