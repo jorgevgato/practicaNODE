@@ -10,7 +10,15 @@ export async function postNew(req, res, next) {
         const {name, price, image, tags} = req.body
         const userId = req.session.userId
 
-        const product = new Product({name, owner: userId, price, image, tags}) 
+        const imageFilename = req.file ? req.file.filename : 'PopLogo.png'
+
+        const product = new Product({
+            name, 
+            owner: userId, 
+            price, 
+            image: imageFilename, 
+            tags
+        }) 
 
         await product.save()
 
