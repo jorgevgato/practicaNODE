@@ -8,6 +8,13 @@ Install dependencies with:
 npm install
 ```
 
+Copy environment variables example to .env:
+```sh
+cp .env.example .env
+```
+
+Review your new .env values to match your configuration.
+
 Only on FIRST deploy, use this command to initialize database:
 
 ```sh

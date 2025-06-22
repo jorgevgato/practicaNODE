@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import { confirm } from '@inquirer/prompts';
 import connectMongoose from './lib/connectMongoose.js'
 import Product from "./models/Product.js"
