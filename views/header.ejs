@@ -9,7 +9,16 @@
 </head>
 <body>
   <nav class="navbar bg-body-tertiary">
+
       <div class="container-fluid">
+        <div class="d-flex flex-column align-items-start me-3">
+          <% getLocales().forEach(locale => { %>
+            <a href="/change-locale/<%= locale %>">
+              <img src="/<%= locale %>.png" alt="<%= locale %>" style="width: 20px;">
+            </a>
+          <% }); %>
+        </div>
+
         <a class="navbar-brand" href="/">n o d e POP!</a> 
 
         <% if (session.userId) { %>
@@ -21,11 +30,6 @@
         <% } %>
 
         <div class="d-flex align-items-center ms-auto">
-
-          <% getLocales().forEach(locale => { %>
-            <a href="/change-locale/<%= locale %>"><%= locale %></a>
-          <% }); %>
-
           <% if (session.userId) { %>
               <span class="navbar-text me-3">
                 User ID: <%= session.userId %>
