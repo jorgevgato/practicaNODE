@@ -2,20 +2,20 @@
 
 <div class="container">
 
-    <h1>Nuevo producto</h1>
+    <h1><%= __('Nuevo producto') %></h1>
 
     <form method="POST" enctype="multipart/form-data">
         <div class="mb-3">
-            <label for="name" class="form-label">Nombre del producto</label>
+            <label for="name" class="form-label"><%= __('Nombre del producto') %></label>
             <input required type="text" name="name" class="form-control" id="name">
         </div>
         <div class="mb-3">
-            <label for="price" class="form-label">Precio</label>
+            <label for="price" class="form-label"><%= __('Precio') %></label>
             <input required type="number" name="price" class="form-control" id="price">
         </div>
         
         <div class="mb-3">
-            <label for="image" class="form-label">Foto</label>
+            <label for="image" class="form-label"><%= __('Foto') %></label>
             <input type="file" name="image" class="form-control" id="image">
         </div>
         <!--
@@ -33,14 +33,14 @@
         <div class="mb-3">
             <label for="tags" class="form-label">Tags</label>
             <select required class="form-select" name="tags" aria-label="Default select example">
-                <option value="" disabled selected>Selecciona una categoría</option>
+                <option value="" disabled selected><%= __('Selecciona una categoría') %></option>
                 <option value="lifestyle">lifestyle</option>
                 <option value="mobile">mobile</option>
                 <option value="vehicle">vehicle</option>
                 <option value="work">work</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Añadir producto</button>
+        <button type="submit" class="btn btn-primary"><%= __('Añadir producto') %></button>
 
     </form>
 </div>

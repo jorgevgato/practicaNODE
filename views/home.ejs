@@ -2,14 +2,14 @@
 
 <% if (!session.userId) { %>
     <div class="container-fluid">
-        <h1>¡<a href="/login">Inicia sesión</a> para acceder a tus productos!</h1>
+        <h1>¡<a href="/login"><%= __('Inicia sesión') %></a> <%= __('para acceder a tus productos') %>!</h1>
         <img src="/PopLogo.png" class="img-fluid" alt="logo">
     </div>
 
 <% } else { %>
 
 <div class="container-fluid">
-    <h1>Productos</h1>
+    <h1><%= __('Productos') %></h1>
     <div class="row g-1">
         <% products.forEach(product => { %>
             <div class="col-md-6 mb-4">
@@ -17,13 +17,13 @@
                     <img src=<%= `/productimg/${product.image}` %> class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title"><%= product.name %></h5>
-                        <p class="card-text">Disponible a un precio de <%= product.price %> €.</p>
+                        <p class="card-text"><%= __('Disponible a un precio de') %> <%= product.price %> €</p>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><em><%= product.tags %></em></li>
                     </ul>
                     <div class="card-body">
-                        <a href="/products/delete/<%= product._id %>" class="card-link">Eliminar producto</a>
+                        <a href="/products/delete/<%= product._id %>" class="card-link"><%= __('Eliminar producto') %></a>
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
         <ul class="pagination">
             <% if (currentPage > 1) { %>
                 <li class="page-item">
-                    <a class="page-link" href="?page=<%= currentPage - 1 %>">Anterior</a>
+                    <a class="page-link" href="?page=<%= currentPage - 1 %>"><%= __('Anterior') %></a>
                 </li>
             <% } %>
 
@@ -46,7 +46,7 @@
 
             <% if (currentPage < totalPages) { %>
                 <li class="page-item">
-                    <a class="page-link" href="?page=<%= currentPage + 1 %>">Siguiente</a>
+                    <a class="page-link" href="?page=<%= currentPage + 1 %>"><%= __('Siguiente') %></a>
                 </li>
             <% } %>
         </ul>
