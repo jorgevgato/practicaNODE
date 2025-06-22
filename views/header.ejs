@@ -21,6 +21,11 @@
         <% } %>
 
         <div class="d-flex align-items-center ms-auto">
+
+          <% getLocales().forEach(locale => { %>
+            <a href="/change-locale/<%= locale %>"><%= locale %></a>
+          <% }); %>
+
           <% if (session.userId) { %>
               <span class="navbar-text me-3">
                 User ID: <%= session.userId %>
