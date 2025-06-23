@@ -34,7 +34,9 @@ app.use(express.static(path.join(__dirname, 'public')))
 /* API ROUTES */
 app.get('/api/products', apiProductsController.list)
 app.get('/api/products/:productId', apiProductsController.getOne)
-
+app.post('/api/products', upload.single('image'), apiProductsController.newProduct)
+app.put('/api/products/:productId', upload.single('image'), apiProductsController.update)
+app.delete('/api/products/:productId', apiProductsController.deleteProduct)
 
 /* WEBAPP ROUTES */
 app.use(sessionManager.middleware)
