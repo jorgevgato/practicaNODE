@@ -13,6 +13,7 @@ import * as localeController from './controllers/localeController.js'
 import upload from './lib/uploadConfigure.js';
 import i18n from './lib/i18nConfigure.js';
 import cookieParser from 'cookie-parser';
+import { error } from 'node:console';
 
 await connectMongoose()
 console.log('Connected to MongoDB')
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 /* API ROUTES */
 app.get('/api/products', apiProductsController.list)
+app.get('/api/products/:productId', apiProductsController.getOne)
 
 
 /* WEBAPP ROUTES */
@@ -62,6 +64,12 @@ app.use((err, req, res, next) => {
     }
   
     res.status(err.status || 500)
+
+    // API errors - response JSON
+    if (req.url.startsWith('/api/')) {
+      res.json({error: err.message})
+      return
+    }
 
     res.locals.message = err.message
     res.locals.error = process.env.NODEPOP_ENV === 'development' ? err : {}
