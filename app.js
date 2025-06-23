@@ -7,6 +7,7 @@ import connectMongoose from './lib/connectMongoose.js';
 import * as homeController from './controllers/homeController.js'
 import * as loginController from './controllers/loginController.js'
 import * as productsController from './controllers/productsController.js'
+import * as apiProductsController from './controllers/api/apiProductsController.js'
 import * as sessionManager from './lib/sessionManager.js'
 import * as localeController from './controllers/localeController.js'
 import upload from './lib/uploadConfigure.js';
@@ -29,8 +30,11 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname, 'public')))
 
+/* API ROUTES */
+app.get('/api/products', apiProductsController.list)
 
-/* APP ROUTES */
+
+/* WEBAPP ROUTES */
 app.use(sessionManager.middleware)
 app.use(sessionManager.useSessionInViews)
 app.use(cookieParser())

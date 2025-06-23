@@ -4,7 +4,7 @@ export async function index (req, res, next) {
     try {
         const userId = req.session.userId
         const page = parseInt(req.query.page) || 1
-        const limit = 2
+        const limitPerPage = 2
 
         let products = []
         let totalPages = 1
@@ -13,12 +13,12 @@ export async function index (req, res, next) {
         const totalProducts = await Product.countDocuments({owner: userId})
     //    console.log('Total productos: ', totalProducts)
         
-        totalPages = Math.ceil(totalProducts / limit) || 1
+        totalPages = Math.ceil(totalProducts / limitPerPage) || 1
     //    console.log('Total páginas: ', totalPages)
 
         products = await Product.find({owner: userId})
-            .limit(limit)
-            .skip((page - 1) * limit)
+            .limit(limitPerPage)
+            .skip((page - 1) * limitPerPage)
         }
         
         res.render('home', {
@@ -31,7 +31,3 @@ export async function index (req, res, next) {
         next(error)
     }
 }
-
-/** VALIDACIONES paraminquery CLASE 4 INICIO
- * (validator instalado)
- */
