@@ -34,8 +34,6 @@ On product creation from user profile (/products/new), path to an existing image
 
 Base URL: http://localhost.3000/api
 
-### Product list
-
 #### GET /products
 
 ```json
@@ -92,7 +90,7 @@ Fields recommended:
 {
   "name": "String",
   "price": "Number",
-  "image": "String",
+  "image": "File",
   "tags": ["String"]
 }
 ```

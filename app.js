@@ -7,9 +7,11 @@ import connectMongoose from './lib/connectMongoose.js';
 import * as homeController from './controllers/homeController.js'
 import * as loginController from './controllers/loginController.js'
 import * as productsController from './controllers/productsController.js'
+import * as apiLoginController from './controllers/api/apiLoginController.js'
 import * as apiProductsController from './controllers/api/apiProductsController.js'
 import * as sessionManager from './lib/sessionManager.js'
 import * as localeController from './controllers/localeController.js'
+import * as jwtAuth from './lib/jwtAuthMiddleware.js'
 import upload from './lib/uploadConfigure.js';
 import i18n from './lib/i18nConfigure.js';
 import cookieParser from 'cookie-parser';
@@ -32,11 +34,12 @@ app.use(express.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname, 'public')))
 
 /* API ROUTES */
-app.get('/api/products', apiProductsController.list)
-app.get('/api/products/:productId', apiProductsController.getOne)
-app.post('/api/products', upload.single('image'), apiProductsController.newProduct)
-app.put('/api/products/:productId', upload.single('image'), apiProductsController.update)
-app.delete('/api/products/:productId', apiProductsController.deleteProduct)
+app.post('/api/login', apiLoginController.loginJWT)
+app.get('/api/products', jwtAuth.guard, apiProductsController.list)
+app.get('/api/products/:productId', jwtAuth.guard, apiProductsController.getOne)
+app.post('/api/products', jwtAuth.guard, upload.single('image'), apiProductsController.newProduct)
+app.put('/api/products/:productId', jwtAuth.guard, upload.single('image'), apiProductsController.update)
+app.delete('/api/products/:productId', jwtAuth.guard, apiProductsController.deleteProduct)
 
 /* WEBAPP ROUTES */
 app.use(sessionManager.middleware)
