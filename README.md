@@ -36,7 +36,7 @@ Base URL: http://localhost.3000/api
 
 ### Product list
 
-GET /api/products
+#### GET /products
 
 ```json
 "results": [
@@ -64,3 +64,45 @@ GET /api/products
   },
 ]
 ```
+
+#### GET /products/_id
+
+```json
+"results":
+  {
+    "_id": "685702d107dbd148dbd3845c",
+    "name": "Nokia 3330",
+    "owner": "685702d107dbd148dbd38457",
+    "price": 28,
+    "image": "nokia3330.jpg",
+    "tags": [
+      "mobile"
+    ],
+    "__v": 0
+  },
+```
+
+#### POST /products
+
+This will create a new product in database. It allows to upload an image for the product if sent as form-data, but it's not mandatory.
+
+Fields recommended:
+
+```json
+{
+  "name": "String",
+  "price": "Number",
+  "image": "String",
+  "tags": ["String"]
+}
+```
+
+Tags admitted: [lifestyle, mobile, vehicle, work]
+
+#### PUT /products/_id
+
+This will update one or many fields of an existing product.
+
+#### DELETE /products/_id
+
+This will delete the product from database, including its image.
