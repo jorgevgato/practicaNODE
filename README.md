@@ -34,6 +34,8 @@ On product creation from user profile (/products/new), path to an existing image
 
 Base URL: http://localhost.3000/api
 
+Token is required to be sent as 'Authorization' in order to use the following functionalities:
+
 #### GET /products
 
 ```json
@@ -94,8 +96,6 @@ Fields recommended:
   "tags": ["String"]
 }
 ```
-
-Tags admitted: [lifestyle, mobile, vehicle, work]
 
 #### PUT /products/_id
 
