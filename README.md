@@ -1,5 +1,17 @@
 # nodePOP
 
+## Despliegue de Servidores
+
+IP: 34.204.242.49
+DNS: ec2-34-204-242-49.compute-1.amazonaws.com
+
+Dominios:
+nodepopw18.duckdns.org
+react.nodepopw18.duckdns.org
+node.nodepopw18.duckdns.org
+
+---
+
 ## Installation
 
 Install dependencies with:
