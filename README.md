@@ -2,13 +2,23 @@
 
 ## Despliegue de Servidores
 
+```sh
 IP: 34.204.242.49
+```
+```sh
 DNS: ec2-34-204-242-49.compute-1.amazonaws.com
+```
 
 Dominios:
+```sh
 nodepopw18.duckdns.org
+```
+```sh
 react.nodepopw18.duckdns.org
+```
+```sh
 node.nodepopw18.duckdns.org
+```
 
 ---
 
