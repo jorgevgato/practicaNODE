@@ -3,10 +3,10 @@
 ## Despliegue de Servidores
 
 ```sh
-IP: 34.204.242.49
+34.204.242.49
 ```
 ```sh
-DNS: ec2-34-204-242-49.compute-1.amazonaws.com
+ec2-34-204-242-49.compute-1.amazonaws.com
 ```
 
 Dominios:
